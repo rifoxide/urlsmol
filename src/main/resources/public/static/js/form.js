@@ -94,7 +94,7 @@ async function submit_form_callback(data) {
 
   if (res.ok) {
     toggle_submit_btn()
-    document.getElementById('generated_url').value = window.location.origin +"/"+ json.url_suffix
+    document.getElementById('generated_url').value = window.location.origin + "/" + json.url_suffix
     document.getElementById('generated_secret_key').value = json.secret_key
 
     elem.style.display = ''
@@ -110,6 +110,10 @@ async function delete_form_callback(data) {
 
   delete data.form_id
   const res = await fetch(`${window.location.origin}/api/delete`, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
     method: 'POST',
     body: JSON.stringify(data)
   })
@@ -121,7 +125,7 @@ async function delete_form_callback(data) {
   if (res.ok) {
     elem.style.display = ''
 
-    document.querySelector('input#delete_url').disabled = true
+    document.querySelector('input#short_url').disabled = true
     document.querySelector('input#secret_key').disabled = true
     document.querySelector('button#delete_btn').disabled = true
 

@@ -4,13 +4,12 @@ import rifoxide.urlsmol.Helpers;
 import rifoxide.urlsmol.model.UrlEntry;
 import rifoxide.urlsmol.repository.UrlEntryRepository;
 import rifoxide.urlsmol.request.CreateSmolUrlRequest;
+import rifoxide.urlsmol.request.DeleteUrlRequest;
 import rifoxide.urlsmol.response.CreateSmolUrlResponse;
 import rifoxide.urlsmol.response.ResponseStatus;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
 
 import java.util.Optional;
 
@@ -47,12 +46,27 @@ public class UrlEntryService {
         return new CreateSmolUrlResponse(ResponseStatus.URL_GEN_SUCCESS, newentry);
 
     }
+
     public Optional<String> getOriginalUrl(String smolurl) {
         Optional<UrlEntry> existingUserOpt = urlEntryRepository.findBySmolurl(smolurl);
-        if(existingUserOpt.isPresent()) {
+        if (existingUserOpt.isPresent()) {
             return Optional.of(existingUserOpt.get().getUrl());
         } else {
             return Optional.empty();
+        }
+    }
+
+    public DeleteUrlResponse deleteUrlEntry(DeleteUrlRequest request) {
+        Optional<UrlEntry> existingUserOpt = urlEntryRepository.findBySmolurl(request.getUrl_suffix());
+        if (existingUserOpt.isPresent()) {
+            if (request.getSecret_key().equals(existingUserOpt.get().getSecretkey())) {
+                urlEntryRepository.deleteById(existingUserOpt.get().getId());
+                return new DeleteUrlResponse(ResponseStatus.URL_DEL_SUCCESS);
+            } else {
+                return new DeleteUrlResponse(ResponseStatus.WRONG_SECRET_KEY);
+            }
+        } else {
+            return new DeleteUrlResponse(ResponseStatus.URL_DEL_FAILED);
         }
     }
 }

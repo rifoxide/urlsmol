@@ -35,7 +35,7 @@ public class UrlEntry {
   public UrlEntry(CreateSmolUrlRequest req) {
     this.url = req.getMain_url().toLowerCase();
     this.smolurl = req.getUrl_suffix().toLowerCase();
-    this.secretkey = Helpers.generateRandomString(12);
+    this.secretkey = Helpers.generateRandomString(25);
     // this.secretkey = req.getSecretkey();
   }
 
@@ -69,6 +69,10 @@ public class UrlEntry {
 
   public void setSecretkey(String secretkey) {
     this.secretkey = secretkey;
+  }
+
+  public Long getId() {
+    return id;
   }
 
 }
