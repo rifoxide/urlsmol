@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import rifoxide.urlsmol.request.DeleteUrlRequest;
-import rifoxide.urlsmol.service.DeleteUrlResponse;
+import rifoxide.urlsmol.response.DeleteUrlResponse;
 import rifoxide.urlsmol.service.UrlEntryService;
 
 @RestController

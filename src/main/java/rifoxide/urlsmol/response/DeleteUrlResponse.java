@@ -1,6 +1,4 @@
-package rifoxide.urlsmol.service;
-
-import rifoxide.urlsmol.response.ResponseStatus;
+package rifoxide.urlsmol.response;
 
 public class DeleteUrlResponse {
     ResponseStatus status_msg;

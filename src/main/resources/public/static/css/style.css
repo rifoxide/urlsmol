@@ -1,3 +1,10 @@
+* {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  /* font-weight: 1000; */
+  font-style: normal;
+}
+
 html,
 body,
 .container {
@@ -7,13 +14,17 @@ body,
 @media (min-width: 800px) {
   .card {
     width: 550px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
 }
 
 .btn-small {
   height: 44px;
 }
-
+.row {
+  /* background-color: rgb(175, 175, 175); */
+}
 .tabs .tab.generate a {
   color: #56aff6;
 }

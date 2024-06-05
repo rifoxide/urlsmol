@@ -6,6 +6,7 @@ import rifoxide.urlsmol.repository.UrlEntryRepository;
 import rifoxide.urlsmol.request.CreateSmolUrlRequest;
 import rifoxide.urlsmol.request.DeleteUrlRequest;
 import rifoxide.urlsmol.response.CreateSmolUrlResponse;
+import rifoxide.urlsmol.response.DeleteUrlResponse;
 import rifoxide.urlsmol.response.ResponseStatus;
 
 import org.springframework.beans.factory.annotation.Autowired;
